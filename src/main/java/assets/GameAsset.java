@@ -44,5 +44,4 @@ public abstract class GameAsset {
         this.name = name;
     }
     
-    public abstract void swim(int x, int y);
 }
