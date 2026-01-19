@@ -26,7 +26,8 @@ public class Enemy extends GameAsset {
     
     
     public void update() {
-    
+        //Gegner um ein Feld bewegen
+        System.out.println("update");
     }
 
     public int getDamage() {
@@ -46,11 +47,20 @@ public class Enemy extends GameAsset {
     public void setHealthpoints(int healthpoints) {
         this.healthpoints = healthpoints;
     }
-
+    public void takeDamage(int damage){
+    this.healthpoints -= damage;
+        if (healthpoints <= 0) {
+        this.die();    
+        }
+    }
+    public int die(){
+    //Lösch den Enemy
+    return bounty;
+    }
     public int getBounty() {
         return bounty;
     }
-   
-    
-
+    public int doDamage(){  
+    return damage;    
+    }
 }
