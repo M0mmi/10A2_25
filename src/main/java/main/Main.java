@@ -11,9 +11,10 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class Main {
-    static Enemy x[] = {null,null,null,null,null};
+    static Enemy one[] = {null,null,null,null,null};
+    static Enemy eight[] = {null,null,null,null,null};
     static int Tickcount = 0;
-    static int n = 1;
+    static int Tickloop = 1;
     public static void main(String[] args) {
         System.out.println("Hello Remote World!");
 
@@ -24,20 +25,21 @@ public class Main {
         Enemy fish = new Enemy(5,5,50,5,0,0,null,"Fish");
         Enemy banana = new Enemy(8,3,85,7,0,0,null,"Banana");
         Timer timer = new Timer();
-    x[0] = fish;
+    one[0] = fish;
         TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
-            if(n==20){
-                n=1;
+            if(Tickloop==20){
+                Tickloop=1;
             }
-                for (int i = 0; i < n; i++) {
+                for (int i = 0; i < Tickloop; i++) {
                     if (Tickcount % i == 0) {
                     switch(i){
                         case 1:
-                            for (int j = 0; j < x.length; j++) {
-                            x[j].update();    
-                            }
+                        for (Enemy one1 : one) {
+                            one1.update();
+                        }
+
                         case 2: 
                         case 3:
                         banana.update();
@@ -47,6 +49,10 @@ public class Main {
                         case 6: 
                         case 7: 
                         case 8:   
+                        for (Enemy eight1 : eight) {
+                            eight1.update();
+                        }
+
                         case 9:    
                         case 10: 
                         case 11: 
@@ -63,7 +69,8 @@ public class Main {
                     }
     
                 }
-            Tickcount++;               
+            Tickcount++; 
+            Tickloop++;
             }
         };
         while (true) {
