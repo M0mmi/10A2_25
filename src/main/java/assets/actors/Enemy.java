@@ -5,6 +5,8 @@ import javax.swing.ImageIcon;
 
 public class Enemy extends GameAsset {
 
+    static Enemy Enemy;
+    
     int damage, velocity, healthpoints, bounty;
 
     public Enemy(int x, int y, ImageIcon img, String name) {
