@@ -5,7 +5,8 @@ import static java.lang.Math.abs;
 import javax.swing.ImageIcon;
 
 public class Tower extends GameAsset {
-    Enemy[] e = {Enemy};
+    Enemy enemy = Enemy.Enemy;
+    Enemy[] e = {enemy};
     int[][] u = {{500,3,20,2,3},{600,3,30,4,4},{1000,4,40,5,7}};
     int upgradeCost, upgradeCostFlowers, damage, fireRate, range, level;
     int money = 5000;
@@ -125,4 +126,3 @@ public class Tower extends GameAsset {
     }
     
 }
-
