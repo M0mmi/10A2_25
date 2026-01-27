@@ -1,5 +1,4 @@
 package assets.actors;
-
 import assets.GameAsset;
 import static java.lang.Math.abs;
 import javax.swing.ImageIcon;
@@ -36,17 +35,6 @@ public class Tower extends GameAsset {
 
     public boolean Enemyinrange(Tower tower){
         boolean g = false;
-        for (int i = 0; i < tower.range; i++) {
-            if (e[i].getX() <= tower.getX()+range || e[i].getX() >= tower.getX()-range) {
-                g = true;
-                break;
-            }
-        }
-        return g ;
-    }
-    
-    public boolean Enemyinrange2(Tower tower){
-        boolean g = false;
         for (int i = 1; i < weg.length+1; i++) {
             if(abs(weg[weg.length-i][0])<= abs(tower.getX()+range) & abs(weg[weg.length-i][1])<= abs(tower.getY())){
                 g = true;
@@ -71,21 +59,9 @@ public class Tower extends GameAsset {
         return en;
     }
     
-    public Enemy nearestEnemy(Tower tower){
-        Enemy en = e[0];
-        for (int i = 0; i < tower.range; i++) {
-            for (int j = 0; j < e.length; j++) {
-                if (e[j].getX() == tower.getX()+i || e[j].getX() == tower.getX()-i) {
-                    en = e[j];
-                    break;
-                }
-            }
-        }
-        return en;
-    }
     
     public void shoot (Tower tower) {
-        if (Enemyinrange2(tower)) {
+        if (Enemyinrange(tower)) {
             Enemy enemy = farestEnemy(tower);
             enemy.healthpoints = enemy.healthpoints-tower.damage;
         }
@@ -104,7 +80,7 @@ public class Tower extends GameAsset {
             tower.level = tower.level+1;
         }
     }
-
+    
     public int getUpgradeCost() {
         return upgradeCost;
     }
@@ -124,5 +100,10 @@ public class Tower extends GameAsset {
     public int getRange() {
         return range;
     }
+    
+    int xp = 1;
+    int yp = 2;
+    
+    
     
 }
