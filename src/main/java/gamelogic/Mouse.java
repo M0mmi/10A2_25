@@ -44,7 +44,7 @@ public class Mouse {
             //überliegende Grafik
         }
         if(upgradeopen){
-            for (Tower t : Tower.Towers) {
+            for (Tower t : Tower.Towers1) {
                 if(abs(t.getX()+5) <= abs(x) & abs(t.getY()+5) <= abs(y)){
                     t.upgrade(t);
                     upgradeopen = false;

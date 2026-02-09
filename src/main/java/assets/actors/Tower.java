@@ -15,7 +15,7 @@ public class Tower extends GameAsset {
     static int flowers = 20;
     int[][] weg = {{1,1},{1,2},{1,3},{1,4},{1,5}};
     static int i = 0;
-    public static ArrayList<Tower> Towers = new ArrayList<Tower>();
+    public static ArrayList<Tower> Towers1 = new ArrayList<Tower>();
     
     public Tower(int x, int y, ImageIcon img, String name) {
         super(x, y, img, name);
@@ -75,7 +75,7 @@ public class Tower extends GameAsset {
     static public void place(int x, int y){
         Tower k = new Tower(x, y, null, "T"+i+"");
         i = i+1;
-        Towers.add(k);
+        Towers1.add(k);
         money = money-u[0][0];
         flowers = flowers-u[0][1];
     }
