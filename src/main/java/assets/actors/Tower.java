@@ -48,9 +48,9 @@ public class Tower extends GameAsset {
         }
         return g ;
     }
-    
+    // auf ArrayLists ändern!!!!
     public Enemy farestEnemy(Tower tower){
-        Enemy en = e[0];
+        Enemy en = enemy;
         for (int i = 1; i < weg.length+1; i++) {
             if(abs(weg[weg.length-i][0])<= abs(tower.getX()+range) & abs(weg[weg.length-i][1])<= abs(tower.getY())){
                 for (int j = 0; j < e.length; j++) {
