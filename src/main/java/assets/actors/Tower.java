@@ -98,7 +98,7 @@ public class Tower extends GameAsset {
     public void shoot (Tower tower) {
         if (Enemyinrange(tower)) {
             Enemy en = farestEnemy(tower);
-            en.healthpoints = en.healthpoints-tower.damage;
+            en.takeDamage(tower.damage);
         }
     }
     
