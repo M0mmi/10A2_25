@@ -3,19 +3,17 @@ import assets.GameAsset;
 import static java.lang.Math.abs;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
-import gamelogic.Shop;
-import assets.actors.Enemy;
+import gamelogic.Map;
 
 public class Tower extends GameAsset {
     Enemy enemy = Enemy.Enemy;
-    Enemy[] e = {enemy};
+    // Standard, Fast, Tank, Weg
     static int[][] u = {{500,3,20,2,3},{600,3,30,4,4},{1000,4,40,5,7}};
     int upgradeCost, upgradeCostFlowers, damage, fireRate, range, level;
     static int money = 5000;
     static int flowers = 20;
-    int[][] weg = {{1,1},{1,2},{1,3},{1,4},{1,5}};
     static int i = 0;
-    public static ArrayList<Tower> Towers1 = new ArrayList<Tower>();
+    public static ArrayList<Tower> Towers1 = new ArrayList<>();
     
     public Tower(int x, int y, ImageIcon img, String name) {
         super(x, y, img, name);
@@ -40,25 +38,56 @@ public class Tower extends GameAsset {
 
     public boolean Enemyinrange(Tower tower){
         boolean g = false;
-        for (int i = 1; i < weg.length+1; i++) {
-            if(abs(weg[weg.length-i][0])<= abs(tower.getX()+range) & abs(weg[weg.length-i][1])<= abs(tower.getY())){
-                g = true;
-                break;
+        for (Enemy e : Enemy.Standard) {
+                if(abs(e.getX()+5) <= abs(tower.getX()+tower.range) & abs(e.getY()+5) <= abs(tower.getY()+tower.range)){
+                    g = true;
+                }
             }
-        }
+        for (Enemy e : Enemy.Fast) {
+                if(abs(e.getX()+5) <= abs(tower.getX()+tower.range) & abs(e.getY()+5) <= abs(tower.getY()+tower.range)){
+                    g = true;
+                }
+            }
+        for (Enemy e : Enemy.Tank) {
+                if(abs(e.getX()+5) <= abs(tower.getX()+tower.range) & abs(e.getY()+5) <= abs(tower.getY()+tower.range)){
+                    g = true;
+                }
+            }
         return g ;
     }
     // auf ArrayLists ändern!!!!
     public Enemy farestEnemy(Tower tower){
         Enemy en = enemy;
-        for (int i = 1; i < weg.length+1; i++) {
-            if(abs(weg[weg.length-i][0])<= abs(tower.getX()+range) & abs(weg[weg.length-i][1])<= abs(tower.getY())){
-                for (int j = 0; j < e.length; j++) {
-                    if (e[j].getX() == weg[weg.length-i][0] & e[j].getY() == weg[weg.length-i][1]) {
-                        en = e[j];
+        int c = 0;
+        ArrayList<Enemy> b = new ArrayList<>();
+        for (int j = 0; j < Map.Weg.size(); j++) {
+            Tile a = Map.Weg.get(Map.Weg.size()-i);
+            if (abs(a.getX())<= abs(tower.getX()+tower.range)&abs(a.getX())<= abs(tower.getX()+tower.range)) {
+                for (Enemy e : Enemy.Standard) {
+                    if(e.getX() == a.getX() & e.getY() == a.getY()){
+                        b.add(e);
                         break;
                     }
                 }
+                for (Enemy e : Enemy.Fast) {
+                    if(e.getX() == a.getX() & e.getY() == a.getY()){
+                        b.add(e);
+                        break;
+                    }
+                }
+                for (Enemy e : Enemy.Tank) {
+                    if(e.getX() == a.getX() & e.getY() == a.getY()){
+                        b.add(e);
+                        break;
+                    }
+                }
+            }
+            
+        }
+        for (Enemy e : b) {
+            if (e.getHealthpoints()>c){
+                c = e.getHealthpoints();
+                en = e;
             }
         }
         return en;
@@ -67,12 +96,12 @@ public class Tower extends GameAsset {
     
     public void shoot (Tower tower) {
         if (Enemyinrange(tower)) {
-            Enemy enemy = farestEnemy(tower);
-            enemy.healthpoints = enemy.healthpoints-tower.damage;
+            Enemy en = farestEnemy(tower);
+            en.healthpoints = en.healthpoints-tower.damage;
         }
     }
     
-    static public void place(int x, int y){
+    static public void place (int x, int y){
         Tower k = new Tower(x, y, null, "T"+i+"");
         i = i+1;
         Towers1.add(k);
@@ -114,8 +143,6 @@ public class Tower extends GameAsset {
         return range;
     }
     
-    int xp = 1;
-    int yp = 2;
     
     
     

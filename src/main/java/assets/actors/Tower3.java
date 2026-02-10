@@ -1,26 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package assets.actors;
 import assets.GameAsset;
+import gamelogic.Map;
 import static java.lang.Math.abs;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
-/**
- *
- * @author guest-qlc3jq
- */
+
 public class Tower3 extends GameAsset{
     Enemy enemy = Enemy.Enemy;
-    Enemy[] e = {enemy};
     static int[][] u = {{500,3,20,2,3},{600,3,30,4,4},{1000,4,40,5,7}};
     int upgradeCost, upgradeCostFlowers, damage, fireRate, range, level;
     static int money = 5000;
     static int flowers = 20;
-    int[][] weg = {{1,1},{1,2},{1,3},{1,4},{1,5}};
     static int i = 0;
-    public static ArrayList<Tower3> Towers3 = new ArrayList<Tower3>();
+    public static ArrayList<Tower3> Towers3 = new ArrayList<>();
     
     public Tower3(int x, int y, ImageIcon img, String name) {
         super(x, y, img, name);
@@ -43,41 +36,60 @@ public class Tower3 extends GameAsset{
         this.level = level;
     }
 
-    public boolean Enemyinrange2(Tower3 tower){
+    public boolean Enemyinrange(Tower3 tower){
         boolean g = false;
-        for (int i = 1; i < weg.length+1; i++) {
-            if(abs(weg[weg.length-i][0])<= abs(tower.getX()+range) & abs(weg[weg.length-i][1])<= abs(tower.getY())){
-                g = true;
-                break;
+        for (Enemy e : Enemy.Standard) {
+                if(abs(e.getX()+5) <= abs(tower.getX()+tower.range) & abs(e.getY()+5) <= abs(tower.getY()+tower.range)){
+                    g = true;
+                }
             }
-        }
+        for (Enemy e : Enemy.Fast) {
+                if(abs(e.getX()+5) <= abs(tower.getX()+tower.range) & abs(e.getY()+5) <= abs(tower.getY()+tower.range)){
+                    g = true;
+                }
+            }
+        for (Enemy e : Enemy.Tank) {
+                if(abs(e.getX()+5) <= abs(tower.getX()+tower.range) & abs(e.getY()+5) <= abs(tower.getY()+tower.range)){
+                    g = true;
+                }
+            }
         return g ;
     }
     
-    public Enemy farestEnemy(Tower3 tower){
-        Enemy en = e[0];
-        for (int i = 1; i < weg.length+1; i++) {
-            if(abs(weg[weg.length-i][0])<= abs(tower.getX()+range) & abs(weg[weg.length-i][1])<= abs(tower.getY())){
-                for (int j = 0; j < e.length; j++) {
-                    if (e[j].getX() == weg[weg.length-i][0] & e[j].getY() == weg[weg.length-i][1]) {
-                        en = e[j];
+    public ArrayList farestEnemys(Tower3 tower){
+        ArrayList<Enemy> b = new ArrayList<>();
+        for (int j = 0; j < Map.Weg.size(); j++) {
+            Tile a = Map.Weg.get(Map.Weg.size()-i);
+            if (abs(a.getX())<= abs(tower.getX()+tower.range)&abs(a.getX())<= abs(tower.getX()+tower.range)) {
+                for (Enemy e : Enemy.Standard) {
+                    if(e.getX() == a.getX() & e.getY() == a.getY()){
+                        b.add(e);
+                        break;
+                    }
+                }
+                for (Enemy e : Enemy.Fast) {
+                    if(e.getX() == a.getX() & e.getY() == a.getY()){
+                        b.add(e);
+                        break;
+                    }
+                }
+                for (Enemy e : Enemy.Tank) {
+                    if(e.getX() == a.getX() & e.getY() == a.getY()){
+                        b.add(e);
                         break;
                     }
                 }
             }
+            
         }
-        return en;
+        return b;
     }
     
     
     public void shoot (Tower3 tower) {
-        if (Enemyinrange2(tower)) {
-            Enemy en = farestEnemy(tower);
-            for (int i = 0; i < e.length; i++) {
-                if (e[i].getX()== en.getX() & e[i].getY() == en.getY()) {
-                     e[i].healthpoints = e[i].healthpoints - tower.damage;
-                }
-            }
+        ArrayList<Enemy> b =farestEnemys(tower);
+        for (Enemy e : b) {
+            e.healthpoints = e.healthpoints - tower.damage;
         }
     }
     

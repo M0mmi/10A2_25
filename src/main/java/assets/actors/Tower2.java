@@ -12,15 +12,12 @@ import javax.swing.ImageIcon;
  * @author guest-qlc3jq
  */
 public class Tower2 extends GameAsset{
-    Enemy enemy = Enemy.Enemy;
-    Enemy[] e = {enemy};
     static int[][] u = {{500,3,20,2,3},{600,3,30,4,4},{1000,4,40,5,7}};
     int upgradeCost, upgradeCostFlowers, damage, fireRate, range, level;
     static int money = 5000;
     static int flowers = 20;
-    int[][] weg = {{1,1},{1,2},{1,3},{1,4},{1,5}};
     static int i = 0;
-    public static ArrayList<Tower2> Towers2 = new ArrayList<Tower2>();
+    public static ArrayList<Tower2> Towers2 = new ArrayList<>();
     
     public Tower2(int x, int y, ImageIcon img, String name) {
         super(x, y, img, name);
@@ -43,30 +40,42 @@ public class Tower2 extends GameAsset{
         this.level = level;
     }
    
-    public boolean Enemyinrange2(Tower2 tower){
+    public boolean Enemyinrange(Tower2 tower){
         boolean g = false;
-        for (int i = 1; i < weg.length+1; i++) {
-            if(abs(weg[weg.length-i][0])<= abs(tower.getX()+range) & abs(weg[weg.length-i][1])<= abs(tower.getY())){
-                g = true;
-                break;
+        for (Enemy e : Enemy.Standard) {
+                if(abs(e.getX()) <= abs(tower.getX()+tower.range) & abs(e.getY()) <= abs(tower.getY()+tower.range)){
+                    g = true;
+                }
             }
-        }
+        for (Enemy e : Enemy.Fast) {
+                if(abs(e.getX()) <= abs(tower.getX()+tower.range) & abs(e.getY()) <= abs(tower.getY()+tower.range)){
+                    g = true;
+                }
+            }
+        for (Enemy e : Enemy.Tank) {
+                if(abs(e.getX()) <= abs(tower.getX()+tower.range) & abs(e.getY()) <= abs(tower.getY()+tower.range)){
+                    g = true;
+                }
+            }
         return g ;
     }
     
     public void shoot (Tower2 tower) {
-        if (Enemyinrange2(tower)) {
-            for (int i = 0; i <= range; i++) {
-            for (int j = 0; j < e.length; j++) {
-                if (tower.getX()+i == e[j].getX() & tower.getY()+i == e[j].getY()) {
-                    e[i].healthpoints = e[i].healthpoints - tower.damage;
-                }
-                if (tower.getX()-i == e[j].getX() & tower.getY()-i == e[j].getY()) {
-                    e[i].healthpoints = e[i].healthpoints - tower.damage;
+        for (Enemy e : Enemy.Standard) {
+                if(abs(e.getX()) <= abs(tower.getX()+tower.range) & abs(e.getY()) <= abs(tower.getY()+tower.range)){
+                    e.healthpoints = e.healthpoints-tower.damage;
                 }
             }
-        }
-        }
+        for (Enemy e : Enemy.Fast) {
+                if(abs(e.getX()) <= abs(tower.getX()+tower.range) & abs(e.getY()) <= abs(tower.getY()+tower.range)){
+                    e.healthpoints = e.healthpoints-tower.damage;
+                }
+            }
+        for (Enemy e : Enemy.Tank) {
+                if(abs(e.getX()) <= abs(tower.getX()+tower.range) & abs(e.getY()) <= abs(tower.getY()+tower.range)){
+                    e.healthpoints = e.healthpoints-tower.damage;
+                }
+            }
     }
     
     public void upgrade (Tower2 tower) {
