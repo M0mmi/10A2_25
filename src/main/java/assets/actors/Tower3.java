@@ -59,7 +59,7 @@ public class Tower3 extends GameAsset{
     public ArrayList farestEnemys(Tower3 tower){
         ArrayList<Enemy> b = new ArrayList<>();
         for (int j = 0; j < Map.Weg.size(); j++) {
-            Tile a = Map.Weg.get(Map.Weg.size()-i);
+            Tiles a = Map.Weg.get(Map.Weg.size()-i);
             if (abs(a.getX())<= abs(tower.getX()+tower.range)&abs(a.getX())<= abs(tower.getX()+tower.range)) {
                 for (Enemy e : Enemy.Standard) {
                     if(e.getX() == a.getX() & e.getY() == a.getY()){
