@@ -5,9 +5,13 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 public class Enemy extends GameAsset {
+
+
+static Enemy Enemy;
 public static ArrayList<Enemy> Standard = new ArrayList<>();
 public static ArrayList<Enemy> Tank = new ArrayList<>();
 public static ArrayList<Enemy> Fast = new ArrayList<>();
+
     int damage, velocity, healthpoints, bounty;
 
     public Enemy(int x, int y, ImageIcon img, String name) {

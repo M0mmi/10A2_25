@@ -1,22 +1,21 @@
 
 package assets.actors;
 import assets.GameAsset;
+import gamelogic.Map;
 import static java.lang.Math.abs;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
-import gamelogic.Map;
 
-public class Tower extends GameAsset {
+public class Tower3 extends GameAsset{
     Enemy enemy = Enemy.Enemy;
-    // Standard, Fast, Tank, Weg
     static int[][] u = {{500,3,20,2,3},{600,3,30,4,4},{1000,4,40,5,7}};
     int upgradeCost, upgradeCostFlowers, damage, fireRate, range, level;
     static int money = 5000;
     static int flowers = 20;
     static int i = 0;
-    public static ArrayList<Tower> Towers1 = new ArrayList<>();
+    public static ArrayList<Tower3> Towers3 = new ArrayList<>();
     
-    public Tower(int x, int y, ImageIcon img, String name) {
+    public Tower3(int x, int y, ImageIcon img, String name) {
         super(x, y, img, name);
         this.upgradeCost = 500;
         this.upgradeCostFlowers = 3;
@@ -27,7 +26,7 @@ public class Tower extends GameAsset {
         
     }
 
-    public Tower(int upgradeCost, int upgradeCostFlowers, int damage, int fireRate, int range, int level, int x, int y, ImageIcon img, String name) {
+    public Tower3(int upgradeCost, int upgradeCostFlowers, int damage, int fireRate, int range, int level, int x, int y, ImageIcon img, String name) {
         super(x, y, img, name);
         this.upgradeCost = upgradeCost;
         this.upgradeCostFlowers = upgradeCostFlowers;
@@ -37,7 +36,7 @@ public class Tower extends GameAsset {
         this.level = level;
     }
 
-    public boolean Enemyinrange(Tower tower){
+    public boolean Enemyinrange(Tower3 tower){
         boolean g = false;
         for (Enemy e : Enemy.Standard) {
                 if(abs(e.getX()+5) <= abs(tower.getX()+tower.range) & abs(e.getY()+5) <= abs(tower.getY()+tower.range)){
@@ -56,10 +55,8 @@ public class Tower extends GameAsset {
             }
         return g ;
     }
-    // auf ArrayLists ändern!!!!
-    public Enemy farestEnemy(Tower tower){
-        Enemy en = enemy;
-        int c = 0;
+    
+    public ArrayList farestEnemys(Tower3 tower){
         ArrayList<Enemy> b = new ArrayList<>();
         for (int j = 0; j < Map.Weg.size(); j++) {
             Tiles a = Map.Weg.get(Map.Weg.size()-i);
@@ -85,32 +82,18 @@ public class Tower extends GameAsset {
             }
             
         }
+        return b;
+    }
+    
+    
+    public void shoot (Tower3 tower) {
+        ArrayList<Enemy> b =farestEnemys(tower);
         for (Enemy e : b) {
-            if (e.getHealthpoints()>c){
-                c = e.getHealthpoints();
-                en = e;
-            }
-        }
-        return en;
-    }
-    
-    
-    public void shoot (Tower tower) {
-        if (Enemyinrange(tower)) {
-            Enemy en = farestEnemy(tower);
-            en.takeDamage(tower.damage);
+            e.healthpoints = e.healthpoints - tower.damage;
         }
     }
     
-    static public void place (int x, int y){
-        Tower k = new Tower(x, y, null, "T"+i+"");
-        i = i+1;
-        Towers1.add(k);
-        money = money-u[0][0];
-        flowers = flowers-u[0][1];
-    }
-    
-    public void upgrade (Tower tower) {
+    public void upgrade (Tower3 tower) {
         if (tower.level<=3 & money>tower.upgradeCost & flowers>tower.upgradeCostFlowers) {
             int x = tower.level-1;
             money = money-tower.upgradeCost;
@@ -123,7 +106,15 @@ public class Tower extends GameAsset {
             tower.level = tower.level+1;
         }
     }
-    
+
+    static public void place(int x, int y){
+        Tower3 k = new Tower3(x, y, null, "3T"+i+"");
+        i = i+1;
+        Towers3.add(k);
+        money = money-u[0][0];
+        flowers = flowers-u[0][1];
+    }
+
     public int getUpgradeCost() {
         return upgradeCost;
     }
@@ -143,8 +134,6 @@ public class Tower extends GameAsset {
     public int getRange() {
         return range;
     }
-    
-    
-    
+   
     
 }
