@@ -1,10 +1,13 @@
 package assets.actors;
 
 import assets.GameAsset;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 public class Enemy extends GameAsset {
-
+public static ArrayList<Enemy> Standard = new ArrayList<>();
+public static ArrayList<Enemy> Tank = new ArrayList<>();
+public static ArrayList<Enemy> Fast = new ArrayList<>();
     int damage, velocity, healthpoints, bounty;
 
     public Enemy(int x, int y, ImageIcon img, String name) {
@@ -55,6 +58,23 @@ public class Enemy extends GameAsset {
         }
     }
     public int die(){
+        for (int i = 0; i < Standard.size(); i++) {
+            if (Standard.get(i).healthpoints <= 0) {
+            Standard.remove(i);
+                System.out.println("Standard removed!");
+            }    
+        }
+        for (int i = 0; i < Tank.size(); i++) {
+            if (Tank.get(i).healthpoints <= 0) {
+            Tank.remove(i);
+            }    
+        }
+        for (int i = 0; i < Fast.size(); i++) {
+            if (Fast.get(i).healthpoints <= 0) {
+            Fast.remove(i);
+            }    
+        }        
+    
     //Lösch den Enemy
     return bounty;
     }
