@@ -5,6 +5,7 @@ import static java.lang.Math.abs;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import gamelogic.Map;
+import main.Tiles;
 
 public class Tower extends GameAsset {
     Enemy enemy = Enemy.Enemy;
@@ -61,8 +62,9 @@ public class Tower extends GameAsset {
         Enemy en = enemy;
         int c = 0;
         ArrayList<Enemy> b = new ArrayList<>();
-        for (int j = 0; j < Map.Weg.size(); j++) {
-            Tiles a = Map.Weg.get(Map.Weg.size()-i);
+       // for (int j = 0; j < Map.Weg.size(); j++) {
+         //   Tiles a = Map.Weg.get(Map.Weg.size()-i);
+         Tiles a = null;
             if (abs(a.getX())<= abs(tower.getX()+tower.range)&abs(a.getX())<= abs(tower.getX()+tower.range)) {
                 for (Enemy e : Enemy.Standard) {
                     if(e.getX() == a.getX() & e.getY() == a.getY()){
@@ -84,7 +86,7 @@ public class Tower extends GameAsset {
                 }
             }
             
-        }
+       // }
         for (Enemy e : b) {
             if (e.getHealthpoints()>c){
                 c = e.getHealthpoints();

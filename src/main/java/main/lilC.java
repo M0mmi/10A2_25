@@ -20,6 +20,30 @@ import java.util.List;
 public class lilC extends JPanel {
 
     Image Wiese;
+    Image Weg_Waagerecht;
+    Image Weg_Senkrecht;
+    Image Stein_Hoch;
+    Image Stein_Groß;
+    Image Stein_Flach;
+    Image Stamm_Flach;
+    Image Stamm_Hoch;
+    Image Lagerfeuer;
+    Image Kurve_Oben_Links;
+    Image Kurve_Oben_Rechts;
+    Image Kurve_Unten_Rechts;
+    Image Kurve_Unten_Links;
+    Image Flagge;
+    Image Busch_klein;
+    Image Busch_Groß;
+    Image Busch_2;
+    Image Baum2;
+    Image Baum1;
+    Image Baum3;
+    Image Sign;
+    Image Background;
+    Image oSL;
+    Image B1;
+
     int x = 0;
     int a = 40;
 
@@ -29,157 +53,80 @@ public class lilC extends JPanel {
         this.setSize(1920, 1080);
 
         this.setVisible(true);
-        ImageIcon A = new ImageIcon(getClass().getResource("Bilder//Wiese.png"));
+        
+        System.out.println(getClass().getResource("/Bilder/Wiese.png"));
+        
+        ImageIcon A = new ImageIcon(getClass().getResource("/Bilder/Wiese.png"));
         Wiese = A.getImage();
-
-    }
-    
-    Image Weg_Waagerecht;
-
-    {
-        ImageIcon B = new ImageIcon(getClass().getResource("Bilder//Weg_Waagerecht.png"));
+        
+        ImageIcon B = new ImageIcon(getClass().getResource("/Bilder/Weg_Waagerecht.png"));
         Weg_Waagerecht = B.getImage();
-    }
-    Image Weg_Senkrecht;
 
-    {
-        ImageIcon C = new ImageIcon(getClass().getResource("Bilder//Weg_Senkrecht.png"));
+        ImageIcon C = new ImageIcon(getClass().getResource("/Bilder/Weg_Senkrecht.png"));
         Weg_Senkrecht = C.getImage();
-    }
-    Image Stein_Hoch;
 
-    {
-        ImageIcon D = new ImageIcon(getClass().getResource("Bilder//Stein_Hoch.png"));
+        ImageIcon D = new ImageIcon(getClass().getResource("/Bilder/Stein_Hoch.png"));
         Stein_Hoch = D.getImage();
-    }
-    Image Stein_Groß;
 
-    {
-        ImageIcon D = new ImageIcon(getClass().getResource("Bilder//Stein_Groß.png"));
+        D = new ImageIcon(getClass().getResource("/Bilder/Stein_Groß.png"));
         Stein_Groß = D.getImage();
-    }
-    Image Stein_Flach;
 
-    {
-        ImageIcon D = new ImageIcon(getClass().getResource("Bilder//Stein_Flach.png"));
+        D = new ImageIcon(getClass().getResource("/Bilder/Stein_Flach.png"));
         Stein_Flach = D.getImage();
-    }
-    Image Stamm_Flach;
 
-    {
-        ImageIcon D = new ImageIcon(getClass().getResource("Bilder//Stamm_Flach.png"));
+        D = new ImageIcon(getClass().getResource("/Bilder/Stamm_Flach.png"));
         Stamm_Flach = D.getImage();
-    }
-    Image Stamm_Hoch;
 
-    {
-        ImageIcon D = new ImageIcon(getClass().getResource("Bilder//Stamm_Hoch.png"));
+        D = new ImageIcon(getClass().getResource("/Bilder/Stamm_Hoch.png"));
         Stamm_Hoch = D.getImage();
-    }
-    Image Lagerfeuer;
 
-    {
-        ImageIcon D = new ImageIcon(getClass().getResource("Bilder//Lagerfeuer.png"));
+        D = new ImageIcon(getClass().getResource("/Bilder/Lagerfeuer.png"));
         Lagerfeuer = D.getImage();
-    }
-    Image Kurve_Oben_Links;
 
-    {
-        ImageIcon D = new ImageIcon(getClass().getResource("Bilder//Kurve_Oben_Links.png"));
+        D = new ImageIcon(getClass().getResource("/Bilder/Kurve_Oben_Links.png"));
         Kurve_Oben_Links = D.getImage();
-    }
-    Image Kurve_Oben_Rechts;
 
-    {
-        ImageIcon D = new ImageIcon(getClass().getResource("Bilder//Kurve_Oben_Rechts.png"));
+        D = new ImageIcon(getClass().getResource("/Bilder/Kurve_Oben_Rechts.png"));
         Kurve_Oben_Rechts = D.getImage();
-    }
-    Image Kurve_Unten_Rechts;
 
-    {
-        ImageIcon D = new ImageIcon(getClass().getResource("Bilder//Kurve_Unten_Rechts.png"));
+        D = new ImageIcon(getClass().getResource("/Bilder/Kurve_Unten_Rechts.png"));
         Kurve_Unten_Rechts = D.getImage();
-    }
-    Image Kurve_Unten_Links;
-
-    {
-        ImageIcon D = new ImageIcon(getClass().getResource("Bilder//Kurve_Unten_Links.png"));
+        D = new ImageIcon(getClass().getResource("/Bilder/Kurve_Unten_Links.png"));
         Kurve_Unten_Links = D.getImage();
-    }
-    Image Flagge;
 
-    {
-        ImageIcon D = new ImageIcon(getClass().getResource("Bilder//Flagge.png"));
+        D = new ImageIcon(getClass().getResource("/Bilder/Flagge.png"));
         Flagge = D.getImage();
-    }
-    Image Busch_klein;
 
-    {
-        ImageIcon D = new ImageIcon(getClass().getResource("Bilder//Busch_klein.png"));
+        D = new ImageIcon(getClass().getResource("/Bilder/Busch_klein.png"));
         Busch_klein = D.getImage();
-    }
-    Image Busch_Groß;
-
-    {
-        ImageIcon D = new ImageIcon(getClass().getResource("Bilder//Busch_Groß.png"));
+        D = new ImageIcon(getClass().getResource("/Bilder/Busch_Groß.png"));
         Busch_Groß = D.getImage();
-    }
-    Image Busch_2;
-
-    {
-        ImageIcon D = new ImageIcon(getClass().getResource("Bilder//Busch_2.png"));
+        D = new ImageIcon(getClass().getResource("/Bilder/Busch_2.png"));
         Busch_2 = D.getImage();
-    }
-    Image Baum2;
-
-    {
-        ImageIcon D = new ImageIcon(getClass().getResource("Bilder//Baum2.png"));
+        D = new ImageIcon(getClass().getResource("/Bilder/Baum2.png"));
         Baum2 = D.getImage();
-    }
-    Image Baum1;
-
-    {
-        ImageIcon D = new ImageIcon(getClass().getResource("Bilder//Baum1.png"));
+        D = new ImageIcon(getClass().getResource("/Bilder/Baum1.png"));
         Baum1 = D.getImage();
-    }
-    Image Baum3;
-
-    {
-        ImageIcon D = new ImageIcon(getClass().getResource("Bilder//Baum3.png"));
+        D = new ImageIcon(getClass().getResource("/Bilder/Baum3.png"));
         Baum3 = D.getImage();
-    }
-    Image Sign;
-
-    {
-        ImageIcon sign = new ImageIcon(getClass().getResource("Bilder//ShopSign.png"));
-        Sign = sign.getImage();
-    }
-    Image Background;
-
-    {
-        ImageIcon background = new ImageIcon(getClass().getResource("Bilder//ShopHintergrund.png"));
-        Background = background.getImage();
-    }
-    Image oSL;
-
-    {
-        ImageIcon obereShopLeiste = new ImageIcon(getClass().getResource("Bilder//ObereShopLeiste.png"));
-        oSL = obereShopLeiste.getImage();
-    }
-
-    Image B1;
-
-    {
-        ImageIcon button_1 = new ImageIcon(getClass().getResource("Bilder//Button_1.png"));
-        B1 = button_1.getImage();
-    }
+        D = new ImageIcon(getClass().getResource("/Bilder/ShopSign.png"));
+        Sign = D.getImage();
+        D = new ImageIcon(getClass().getResource("/Bilder/ShopHintergrund.png"));
+        Background = D.getImage();
+        D = new ImageIcon(getClass().getResource("/Bilder/ObereShopLeiste.png"));
+        oSL = D.getImage();
+        D = new ImageIcon(getClass().getResource("/Bilder/Button_1.png"));
+        B1 = D.getImage();
+   
+        }
 
     /**
      *
      * @param g
      */
     @Override
-    protected void paintComponent(Graphics g) {
+    protected void paintComponent(Graphics g
+    ) {
         g.setColor(Color.green);
         g.fillRect(0, 0, 1920, 1080);
         g.setColor(Color.yellow);
@@ -581,7 +528,6 @@ public class lilC extends JPanel {
         g.drawImage(Background, 1400, 0, 520, 1080, this);
         g.drawImage(Sign, 1475, 100, 400, 200, this);
         g.drawImage(oSL, 1400, 0, 600, 50, this);
-       
 
     }
 
