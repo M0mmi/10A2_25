@@ -7,21 +7,22 @@ package main;
 
 import assets.actors.Enemy;
 import assets.actors.Tower;
-import java.util.ArrayList;
-import java.util.List;
+import gamelogic.Map;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 import javax.swing.JFrame;
 
 public class Main {
     static int Tickcount = 0;
     static int Tickloop = 1;
     static int wave = 1; 
+    static  Tiles[][] lilM = new Tiles[35][25];
+    
     public static void main(String[] args) {
         System.out.println("Hello Remote World!");
 
+        Map m = new Map();
+        
         Tower p = new Tower(0, 0, null, "Peter");
         System.out.println(p.getName());
         p.setName("fghjklö");
@@ -38,7 +39,7 @@ public class Main {
         f.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         int a = 40;
 
-        Tiles[][] lilM = new Tiles[35][25];
+       
         for (int i = 0; i < 35; i++) {
 
             for (int j = 0; j < 25; j++) {
@@ -368,6 +369,7 @@ public class Main {
         for (int i = 0; i < 3; i++) {
         Fast.add(new Enemy(5,5,50,5,0,0,null,"Fast"));           
         }  */       
+   
         Timer timer = new Timer();
         TimerTask timerTask = new TimerTask() {
             @Override
@@ -471,4 +473,16 @@ public class Main {
             timer.scheduleAtFixedRate(timerTask,0, 100);
    
     }       
+    
+    
+    public static Tiles getNextTile (int old) {
+        for (int i = 0; i < lilM.length; i++) {
+            for (int j = 0; j < lilM[i].length; j++) {
+                if (lilM[i][j].getID() == old) {
+                    return lilM[i][j]; 
+                }
+            }
+        }
+        return null;
+    }
 }

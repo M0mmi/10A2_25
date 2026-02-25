@@ -3,6 +3,8 @@ package assets.actors;
 import assets.GameAsset;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import main.Main;
+import main.Tiles;
 
 public class Enemy extends GameAsset {
 
@@ -13,6 +15,7 @@ public static ArrayList<Enemy> Tank = new ArrayList<>();
 public static ArrayList<Enemy> Fast = new ArrayList<>();
 
     int damage, velocity, healthpoints, bounty;
+    private int tile;
 
     public Enemy(int x, int y, ImageIcon img, String name) {
         super(x, y, img, name);
@@ -20,6 +23,7 @@ public static ArrayList<Enemy> Fast = new ArrayList<>();
         this.velocity = 5;
         this.healthpoints = 100;
         this.bounty = 5;
+        this.tile = 3;
 
     }
 
@@ -29,13 +33,28 @@ public static ArrayList<Enemy> Fast = new ArrayList<>();
         this.velocity = velocity;
         this.healthpoints = healthpoints;
         this.bounty = bounty;
+        this.tile = 3;
     }
     
     
     public void update() {
         //Gegner um ein Feld bewegen
         System.out.println("update"+this.getName());
-     //   this.setX(tile[a+1].getx);
+        int deltaX = Main.getNextTile(tile).getX();
+        int deltaY = Main.getNextTile(tile).getY();
+                
+        // ToDo 4 Fälle + null
+        if (deltaX != getX()) {
+            this.setX(getX()-1);
+        }
+           
+        if (deltaY != getY()) {
+            this.setY(getY()-1);
+        }
+        
+       if (deltaX == getX() && deltaY == getY()) {
+           tile = Main.getNextTile(tile).getID();
+       }
     }
 
     public int getDamage() {
