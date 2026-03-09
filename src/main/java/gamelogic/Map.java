@@ -11,6 +11,7 @@ public class Map {
     public int[][] map;
 
     public Map() {
+        /*
         Timer t = new Timer(50, (ActionEvent e) -> {
             System.out.println("T1");
         }); 
@@ -25,6 +26,7 @@ public class Map {
             System.out.println("T3");
         }); 
         t3.start();
+*/
     }
 
     public int[][] getMap() {

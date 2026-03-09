@@ -47,7 +47,7 @@ public static ArrayList<Enemy> Fast = new ArrayList<>();
         else{
         int deltaX = Main.getNextTile(tile).getX();
         int deltaY = Main.getNextTile(tile).getY();
-
+            System.out.println("deltaX: "+deltaX+" deltaY: "+deltaY+" X: "+this.getX()+" Y: "+this.getY());
         
         // ToDo 4 Fälle + null
         if (deltaX != getX()) {
@@ -69,9 +69,10 @@ public static ArrayList<Enemy> Fast = new ArrayList<>();
         }
         
        if (deltaX == getX() && deltaY == getY()) {
-           tile = Main.getNextTile(tile).getID();
+           this.tile = Main.getNextTile(tile).getID();
        }
     }
+        System.out.println(this.getX()+" x  "+this.getY()+" y");
     }
     public int getDamage() {
         return damage;

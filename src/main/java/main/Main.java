@@ -47,7 +47,6 @@ public class Main {
             }
 
         }
-
 //Weg 
         lilM[0][13] = new Tiles(0 * a, 13 * a - 30, 3, false);
         lilM[1][13] = new Tiles(1 * a, 13 * a - 30, 4, false);
@@ -470,7 +469,7 @@ public class Main {
             }
         };
 
-            timer.scheduleAtFixedRate(timerTask,0, 100);
+            timer.scheduleAtFixedRate(timerTask,0, 10);
    
     }       
     
@@ -478,7 +477,8 @@ public class Main {
     public static Tiles getNextTile (int old) {
         for (int i = 0; i < lilM.length; i++) {
             for (int j = 0; j < lilM[i].length; j++) {
-                if (lilM[i][j].getID() == old) {
+                if (lilM[i][j].getID() == old+1) {
+                    System.out.println("das ist LilM: "+lilM[i][j].getID());                    
                     return lilM[i][j]; 
                 }
             }
