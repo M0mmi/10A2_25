@@ -14,8 +14,8 @@ static Enemy Enemy;
 public static ArrayList<Enemy> Standard = new ArrayList<>();
 public static ArrayList<Enemy> Tank = new ArrayList<>();
 public static ArrayList<Enemy> Fast = new ArrayList<>();
-
-    int damage, velocity, healthpoints, bounty;
+    double damage;
+    int velocity, healthpoints, bounty;
     private int tile;
 
     public Enemy(int x, int y, ImageIcon img, String name) {
@@ -28,7 +28,7 @@ public static ArrayList<Enemy> Fast = new ArrayList<>();
 
     }
 
-    public Enemy(int damage, int velocity, int healthpoints, int bounty, int x, int y, ImageIcon img, String name) {
+    public Enemy(double damage, int velocity, int healthpoints, int bounty, int x, int y, ImageIcon img, String name) {
         super(x,y,img, name);
         this.damage = damage;
         this.velocity = velocity;
@@ -39,15 +39,14 @@ public static ArrayList<Enemy> Fast = new ArrayList<>();
     
     
     public void update() {
+        System.out.println("x: "+this.getX()+" y:"+this.getY());
         //Gegner um ein Feld bewegen
-        System.out.println("update"+this.getName());
         if (Main.getNextTile(tile) == null) {
         doDamage(damage);    
         }
         else{
         int deltaX = Main.getNextTile(tile).getX();
         int deltaY = Main.getNextTile(tile).getY();
-            System.out.println("deltaX: "+deltaX+" deltaY: "+deltaY+" X: "+this.getX()+" Y: "+this.getY());
         
         // ToDo 4 Fälle + null
         if (deltaX != getX()) {
@@ -71,10 +70,9 @@ public static ArrayList<Enemy> Fast = new ArrayList<>();
        if (deltaX == getX() && deltaY == getY()) {
            this.tile = Main.getNextTile(tile).getID();
        }
+    }       
     }
-        System.out.println(this.getX()+" x  "+this.getY()+" y");
-    }
-    public int getDamage() {
+    public double getDamage() {
         return damage;
     }
 
@@ -114,14 +112,18 @@ public static ArrayList<Enemy> Fast = new ArrayList<>();
             Fast.remove(i);
             }    
         }        
-    
+        if (Standard.isEmpty() && Fast.isEmpty() && Tank.isEmpty()) {
+        Main.wave++;            
+        Main.waves(Main.wave);
+        }
     //Lösch den Enemy
     return bounty;
     }
     public int getBounty() {
         return bounty;
     }
-    public int doDamage(int damage){  
-    return damage;    
+    public void doDamage(double damage){  
+    Main.Healthbase-= damage;
+        System.out.println("health: "+Main.Healthbase);
     }
 }

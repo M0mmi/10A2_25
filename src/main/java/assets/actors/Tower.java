@@ -4,7 +4,7 @@ import assets.GameAsset;
 import static java.lang.Math.abs;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
-import gamelogic.Map;
+import gamelogic.Ticks;
 import main.Tiles;
 
 public class Tower extends GameAsset {
