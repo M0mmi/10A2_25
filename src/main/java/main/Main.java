@@ -11,7 +11,7 @@ import gamelogic.Ticks;
 import java.util.Timer;
 import java.util.TimerTask;
 import javax.swing.JFrame;
-
+import gamelogic.Ticks;
 public class Main {
 
     public static int wave = 1; 
@@ -19,17 +19,9 @@ public class Main {
     static  Tiles[][] lilM = new Tiles[35][25];
     
     public static void main(String[] args) {
-        System.out.println("Hello Remote World!");
-
-        Ticks m = new Ticks();
-        
-        Tower p = new Tower(0, 0, null, "Peter");
-        System.out.println(p.getName());
-        p.setName("fghjklö");
-        System.out.println(p.getName());
-
-
+//Vorbereitung Map Erstlleung
         // TODO code application logic here
+        Ticks m = new Ticks();
         JFrame f = new JFrame();
         f.setLayout(null);
         f.setSize(1920, 1080);
@@ -357,19 +349,12 @@ public class Main {
 
     
 
-
-//ScheduledExecutorService runwaves = Executors.newSingleThreadScheduledExecutor();
-
-   /*     for (int i = 0; i < 3; i++) {
-        Tank.add(new Enemy(5,5,50,5,0,0,null,"Tank"));           
-        }
-        for (int i = 0; i < 3; i++) {
-        Fast.add(new Enemy(5,5,50,5,0,0,null,"Fast"));           
-        }  */       
+//Runde 1 starten    
  waves(wave);  
-//waves konfigurieren
     }
     public static void waves(int wave){
+        System.out.println("wave:"+wave);
+        //Je nach wave unterschiedliche Gegner für die jeweilige Runde spawnen
             switch(wave){
                 case 1:
         for (int i = 0; i < 5; i++) {
@@ -401,9 +386,7 @@ public class Main {
                 break;
                 case 10:
                 break;                
-            }        
-//runwaves.schedule(() -> {
-//}, 1200, TimeUnit.MILLISECONDS);    
+            }          
                 }            
             
         
@@ -412,12 +395,11 @@ public class Main {
    
         
     
-    
+//Nächstes Tile bestimmen    
     public static Tiles getNextTile (int old) {
         for (int i = 0; i < lilM.length; i++) {
             for (int j = 0; j < lilM[i].length; j++) {
-                if (lilM[i][j].getID() == old+1) {
-                    System.out.println("das ist LilM: "+lilM[i][j].getID());                    
+                if (lilM[i][j].getID() == old+1) {                   
                     return lilM[i][j]; 
                 }
             }

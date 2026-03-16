@@ -8,6 +8,7 @@ import gamelogic.Ticks;
 import main.Tiles;
 
 public class Tower extends GameAsset {
+    
     Enemy enemy = Enemy.Enemy;
     // Standard, Fast, Tank, Weg
     static int[][] u = {{500,3,20,2,3},{600,3,30,4,4},{1000,4,40,5,7}};

@@ -6,7 +6,7 @@ import javax.swing.ImageIcon;
 import main.Main;
 import main.Tiles;
 import main.lilC;
-
+import gamelogic.Ticks;
 public class Enemy extends GameAsset {
 
 
@@ -39,16 +39,16 @@ public static ArrayList<Enemy> Fast = new ArrayList<>();
     
     
     public void update() {
-        System.out.println("x: "+this.getX()+" y:"+this.getY());
-        //Gegner um ein Feld bewegen
+        System.out.println("X:"+this.getX()+"Y:"+this.getY());
+        //wenn die Funktion null ist, dann sind Gegner am Ende-> Schaden machen
         if (Main.getNextTile(tile) == null) {
         doDamage(damage);    
         }
+        //x und y des nächsten Tiles
         else{
         int deltaX = Main.getNextTile(tile).getX();
         int deltaY = Main.getNextTile(tile).getY();
-        
-        // ToDo 4 Fälle + null
+        //Gegner auf x und y bewegen, bis Differenz zwischen Gegner und dem nächsten Tile auf x und y 0 ist
         if (deltaX != getX()) {
             if (deltaX > getX()) {
             this.setX(getX()+1);                
@@ -66,7 +66,7 @@ public static ArrayList<Enemy> Fast = new ArrayList<>();
             this.setY(getY()-1);                
             }            
         }
-        
+        //Wenn Gegner auf dem nächsten Tile ist, Id des Feldes, auf dem Gegner ist, aktualisieren 
        if (deltaX == getX() && deltaY == getY()) {
            this.tile = Main.getNextTile(tile).getID();
        }
@@ -90,12 +90,14 @@ public static ArrayList<Enemy> Fast = new ArrayList<>();
         this.healthpoints = healthpoints;
     }
     public void takeDamage(int damage){
+    //Schaden nehmen, wenn weniger als 0, sterben
     this.healthpoints -= damage;
         if (healthpoints <= 0) {
         this.die();    
         }
     }
     public int die(){
+    //Jeden Gegner in der jeweiligen Liste suchen und löschen, der keine Leben mehr hat
         for (int i = 0; i < Standard.size(); i++) {
             if (Standard.get(i).healthpoints <= 0) {
             Standard.remove(i);
@@ -111,17 +113,18 @@ public static ArrayList<Enemy> Fast = new ArrayList<>();
             if (Fast.get(i).healthpoints <= 0) {
             Fast.remove(i);
             }    
-        }        
+        }
+    //Wenn keine Gegner mehr auf dem Feld sind, nächste Wave starten        
         if (Standard.isEmpty() && Fast.isEmpty() && Tank.isEmpty()) {
         Main.wave++;            
         Main.waves(Main.wave);
         }
-    //Lösch den Enemy
     return bounty;
     }
     public int getBounty() {
         return bounty;
     }
+    //Gegner machen Schaden am Ziel
     public void doDamage(double damage){  
     Main.Healthbase-= damage;
         System.out.println("health: "+Main.Healthbase);
