@@ -4,9 +4,7 @@ import assets.GameAsset;
 import static java.lang.Math.abs;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
-import gamelogic.Map;
 import main.Tiles;
-import main.Main;
 public class Tower extends GameAsset {
     Enemy enemy = Enemy.Enemy;
     static int[][] u = {{500,3,20,2,3},{600,3,30,4,4},{1000,4,40,5,7}};

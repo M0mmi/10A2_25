@@ -1,7 +1,6 @@
 
 package assets.actors;
 import assets.GameAsset;
-import gamelogic.Map;
 import static java.lang.Math.abs;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
@@ -67,7 +66,6 @@ public class Tower3 extends GameAsset{
     }
     // prüfen welcher enemy innerhalb der towerrange am weitesten fortgeschritten ist
     public ArrayList farestEnemys(Tower3 tower){
-        Enemy en = enemy;
         int c = 0;
         boolean g = false;
         Tiles a = null;
@@ -78,7 +76,7 @@ public class Tower3 extends GameAsset{
                 for (int l = 0; l < 10; l++) {
                     if (main.Main.lilM[k][l].id == 89-j) {
                         a = main.Main.lilM[k][l];
-                        // alle gener auf ermitteltem tile finden
+                        // alle gegner auf ermitteltem tile finden
                         if (a.id == c & tileinrange(a,tower)) {
                             int xt = a.getX();
                             int yt = a.getY();
@@ -125,7 +123,7 @@ public class Tower3 extends GameAsset{
         f[5] = y2;
         return f;
     }
-    // gegner schade zufügen
+    // gegner schaden zufügen
     public void shoot (Tower3 tower) {
         ArrayList<Enemy> b = farestEnemys(tower);
         for (Enemy e : b) {
