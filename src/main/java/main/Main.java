@@ -12,6 +12,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import javax.swing.JFrame;
 import gamelogic.Ticks;
+import java.util.Random;
 public class Main {
 
     public static int wave = 1; 
@@ -20,7 +21,7 @@ public class Main {
     
     public static void main(String[] args) {
 //Vorbereitung Map Erstlleung
-        // TODO code application logic here
+        // TODO code application logic here     
         Ticks m = new Ticks();
         JFrame f = new JFrame();
         f.setLayout(null);
@@ -358,15 +359,15 @@ public class Main {
             switch(wave){
                 case 1:
         for (int i = 0; i < 5; i++) {
-        Enemy.Standard.add(new Enemy(0.2,5,50,5,0,490,null,"Standard"));     
+        Enemy.Standard.add(new Enemy(0.2,0,50,5,0,490,null,"Standard"));     
         }                    
                 break;
                 case 2:
                     for (int i = 0; i < 4; i++) {
-        Enemy.Standard.add(new Enemy(0.2,5,50,5,0,490,null,"Standard"));                          
+        Enemy.Standard.add(new Enemy(0.2,0,50,5,0,490,null,"Standard"));                          
                     }
                     for (int i = 0; i < 2; i++) {
-        Enemy.Tank.add(new Enemy(0.8,5,80,5,0,490,null,"Tank"));                          
+        Enemy.Tank.add(new Enemy(0.8,0,80,5,0,490,null,"Tank"));                          
                     }
                 break;
                 case 3:

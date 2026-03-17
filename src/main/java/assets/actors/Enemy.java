@@ -7,6 +7,7 @@ import main.Main;
 import main.Tiles;
 import main.lilC;
 import gamelogic.Ticks;
+import java.util.Random;
 public class Enemy extends GameAsset {
 
 
@@ -15,23 +16,23 @@ public static ArrayList<Enemy> Standard = new ArrayList<>();
 public static ArrayList<Enemy> Tank = new ArrayList<>();
 public static ArrayList<Enemy> Fast = new ArrayList<>();
     double damage;
-    int velocity, healthpoints, bounty;
+    int freeze, healthpoints, bounty;
     private int tile;
 
     public Enemy(int x, int y, ImageIcon img, String name) {
         super(x, y, img, name);
         this.damage = 10;
-        this.velocity = 5;
+        this.freeze = 0;
         this.healthpoints = 100;
         this.bounty = 5;
         this.tile = 3;
 
     }
 
-    public Enemy(double damage, int velocity, int healthpoints, int bounty, int x, int y, ImageIcon img, String name) {
+    public Enemy(double damage, int freeze, int healthpoints, int bounty, int x, int y, ImageIcon img, String name) {
         super(x,y,img, name);
         this.damage = damage;
-        this.velocity = velocity;
+        this.freeze = freeze;
         this.healthpoints = healthpoints;
         this.bounty = bounty;
         this.tile = 3;
@@ -39,6 +40,10 @@ public static ArrayList<Enemy> Fast = new ArrayList<>();
     
     
     public void update() {
+        if (this.freeze >= 1) {
+        freeze--;    
+        }
+        else{
         System.out.println("X:"+this.getX()+"Y:"+this.getY());
         //wenn die Funktion null ist, dann sind Gegner am Ende-> Schaden machen
         if (Main.getNextTile(tile) == null) {
@@ -72,13 +77,14 @@ public static ArrayList<Enemy> Fast = new ArrayList<>();
        }
     }       
     }
+    }
     public double getDamage() {
         return damage;
     }
 
 
-    public int getVelocity() {
-        return velocity;
+    public int getFreeze() {
+        return freeze;
     }
 
 
@@ -96,6 +102,16 @@ public static ArrayList<Enemy> Fast = new ArrayList<>();
         this.die();    
         }
     }
+    public void takeDamageandFreeze(int damage){
+    //Schaden nehmen, wenn weniger als 0, sterben
+    this.healthpoints -= damage;
+        if (healthpoints <= 0) {
+        this.die();    
+        }
+Random r = new Random();
+double help = r.nextGaussian(50, 25);
+this.freeze = (int)Math.round(help);
+    }    
     public int die(){
     //Jeden Gegner in der jeweiligen Liste suchen und löschen, der keine Leben mehr hat
         for (int i = 0; i < Standard.size(); i++) {
