@@ -6,10 +6,11 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 public class Tower2 extends GameAsset{
-    static int[][] u = {{500,3,20,2,3},{600,3,30,4,4},{1000,4,40,5,7}};
-    int upgradeCost, upgradeCostFlowers, damage, fireRate, range, level;
+    static int[][] u = {{500,3,20,2,3,0},{600,3,30,4,4,0},{1000,4,40,5,7,0}};
+    int upgradeCost, upgradeCostFlowers, damage, fireRate, range, level, modef;
     static int money = 5000;
     static int flowers = 20;
+    static int mango = 2;
     static int i = 0;
     public static ArrayList<Tower2> Towers2 = new ArrayList<>();
     
@@ -21,10 +22,11 @@ public class Tower2 extends GameAsset{
         this.fireRate = 2;
         this.range = 3;
         this.level = 0;
+        this.modef = 0;
         
     }
 
-    public Tower2(int upgradeCost, int upgradeCostFlowers, int damage, int fireRate, int range, int level, int x, int y, ImageIcon img, String name) {
+    public Tower2(int upgradeCost, int upgradeCostFlowers, int damage, int fireRate, int range, int level, int modef, int x, int y, ImageIcon img, String name) {
         super(x, y, img, name);
         this.upgradeCost = upgradeCost;
         this.upgradeCostFlowers = upgradeCostFlowers;
@@ -32,6 +34,7 @@ public class Tower2 extends GameAsset{
         this.fireRate = fireRate;
         this.range = range;
         this.level = level;
+        this.modef = modef;
     }
    
     // prüfen ob sich ein gegner innerhalb der towerrange befindet    
@@ -71,21 +74,24 @@ public class Tower2 extends GameAsset{
     }
     // alle gegner in der range erhalten schaden
     public void shoot (Tower2 tower) {
-        for (Enemy e : Enemy.Standard) {
-                if(abs(e.getX()) <= abs(tower.getX()+tower.range) & abs(e.getY()) <= abs(tower.getY()+tower.range)){
-                    e.healthpoints = e.healthpoints-tower.damage;
-                }
+        if (tower.modef == 0) {
+            for (Enemy e : Enemy.Standard) {
+                    if(abs(e.getX()) <= abs(tower.getX()+tower.range) & abs(e.getY()) <= abs(tower.getY()+tower.range)){
+                        e.healthpoints = e.healthpoints-tower.damage;
+                    }
             }
-        for (Enemy e : Enemy.Fast) {
-                if(abs(e.getX()) <= abs(tower.getX()+tower.range) & abs(e.getY()) <= abs(tower.getY()+tower.range)){
-                    e.healthpoints = e.healthpoints-tower.damage;
-                }
+            for (Enemy e : Enemy.Fast) {
+                    if(abs(e.getX()) <= abs(tower.getX()+tower.range) & abs(e.getY()) <= abs(tower.getY()+tower.range)){
+                        e.healthpoints = e.healthpoints-tower.damage;
+                    }
             }
-        for (Enemy e : Enemy.Tank) {
-                if(abs(e.getX()) <= abs(tower.getX()+tower.range) & abs(e.getY()) <= abs(tower.getY()+tower.range)){
-                    e.healthpoints = e.healthpoints-tower.damage;
-                }
+            for (Enemy e : Enemy.Tank) {
+                    if(abs(e.getX()) <= abs(tower.getX()+tower.range) & abs(e.getY()) <= abs(tower.getY()+tower.range)){
+                        e.healthpoints = e.healthpoints-tower.damage;
+                    }
             }
+        }
+        // hier noch freeze einfügen
     }
     // upgrade des towers mit überschreiben der parameter
     public void upgrade (Tower2 tower) {
