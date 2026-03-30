@@ -14,6 +14,17 @@ import javax.swing.JFrame;
 import gamelogic.Ticks;
 import java.util.Random;
 public class Main {
+    static int Tickcount = 0;
+    static int Tickloop = 1;
+    static int wave = 1; 
+    public static Tiles[][] lilM;
+    public static void main(String[] args) {
+        System.out.println("Hello Remote World!");
+
+        Tower p = new Tower(0, 0, null, "Peter");
+        System.out.println(p.getName());
+        p.setName("fghjklö");
+        System.out.println(p.getName());
 
     public static int wave = 1; 
     public static double Healthbase = 4000.000;
