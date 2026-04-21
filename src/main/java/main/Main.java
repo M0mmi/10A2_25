@@ -26,11 +26,11 @@ public class Main {
         p.setName("fghjklö");
         System.out.println(p.getName());
 
-    public static int wave = 1; 
-    public static double Healthbase = 4000.000;
-    static  Tiles[][] lilM = new Tiles[35][25];
+    //public static int wave = 1; 
+    //public static double Healthbase = 4000.000;
+    //static  Tiles[][] lilM = new Tiles[35][25];
     
-    public static void main(String[] args) {
+    
 //Vorbereitung Map Erstlleung
         // TODO code application logic here     
         Ticks m = new Ticks();
