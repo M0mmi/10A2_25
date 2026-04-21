@@ -12,24 +12,17 @@ import java.util.Timer;
 import java.util.TimerTask;
 import javax.swing.JFrame;
 import gamelogic.Ticks;
+import java.util.ArrayList;
 import java.util.Random;
+import javax.swing.ImageIcon;
 public class Main {
     static int Tickcount = 0;
-    static int Tickloop = 1;
-    static int wave = 1; 
-    public static Tiles[][] lilM;
-    public static void main(String[] args) {
-        System.out.println("Hello Remote World!");
-
-        Tower p = new Tower(0, 0, null, "Peter");
-        System.out.println(p.getName());
-        p.setName("fghjklö");
-        System.out.println(p.getName());
-
+    static int Tickloop = 1; 
     public static int wave = 1; 
     public static double Healthbase = 4000.000;
-    static  Tiles[][] lilM = new Tiles[35][25];
-    
+    public static  Tiles[][] lilM = new Tiles[35][25];
+    public static ArrayList<Enemy> allenemies = new ArrayList<>(); 
+    public static lilC c = new lilC(allenemies);
     public static void main(String[] args) {
 //Vorbereitung Map Erstlleung
         // TODO code application logic here     
@@ -37,7 +30,6 @@ public class Main {
         JFrame f = new JFrame();
         f.setLayout(null);
         f.setSize(1920, 1080);
-        lilC c = new lilC();
         f.add(c);
         f.setVisible(true);
         f.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -370,7 +362,7 @@ public class Main {
             switch(wave){
                 case 1:
         for (int i = 0; i < 5; i++) {
-        Enemy.Standard.add(new Enemy(0.2,0,50,5,0,490,null,"Standard"));     
+        Enemy.Standard.add(new Enemy(0.2,0,50,5,0,490,new ImageIcon(Enemy.class.getResource("/Bilder/Anfangsgegner.png")),"Standard"));
         }                    
                 break;
                 case 2:
