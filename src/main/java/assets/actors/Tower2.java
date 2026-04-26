@@ -1,7 +1,7 @@
 
 package assets.actors;
 import assets.GameAsset;
-import static java.lang.Math.abs;
+import static java.lang.Math.sqrt;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
@@ -41,17 +41,17 @@ public class Tower2 extends GameAsset{
     public boolean Enemyinrange(Tower2 tower){
         boolean g = false;
         for (Enemy e : Enemy.Standard) {
-                if(abs(e.getX()) <= abs(tower.getX()+tower.range) & abs(e.getY()) <= abs(tower.getY()+tower.range)){
+                if(Math.sqrt((e.getX()-tower.getzX()) * (e.getX()-tower.getzX()) + (e.getY()-tower.getzY()) * (e.getX()-tower.getzX())) <= tower.range)){
                     g = true;
                 }
             }
         for (Enemy e : Enemy.Fast) {
-                if(abs(e.getX()) <= abs(tower.getX()+tower.range) & abs(e.getY()) <= abs(tower.getY()+tower.range)){
+                if(Math.sqrt((e.getX()-tower.getzX()) * (e.getX()-tower.getzX()) + (e.getY()-tower.getzY()) * (e.getX()-tower.getzX())) <= tower.range){
                     g = true;
                 }
             }
         for (Enemy e : Enemy.Tank) {
-                if(abs(e.getX()) <= abs(tower.getX()+tower.range) & abs(e.getY()) <= abs(tower.getY()+tower.range)){
+                if(Math.sqrt((e.getX()-tower.getzX()) * (e.getX()-tower.getzX()) + (e.getY()-tower.getzY()) * (e.getX()-tower.getzX())) <= tower.range){
                     g = true;
                 }
             }
@@ -76,51 +76,51 @@ public class Tower2 extends GameAsset{
     public void shoot (Tower2 tower) {
         if (tower.modef == 0) {
             for (Enemy e : Enemy.Standard) {
-                    if(abs(e.getX()) <= abs(tower.getX()+tower.range) & abs(e.getY()) <= abs(tower.getY()+tower.range)){
+                    if(Math.sqrt((e.getX()-tower.getzX()) * (e.getX()-tower.getzX()) + (e.getY()-tower.getzY()) * (e.getX()-tower.getzX())) <= tower.range){
                         e.takeDamage(tower.damage);
                     }
             }
             for (Enemy e : Enemy.Fast) {
-                    if(abs(e.getX()) <= abs(tower.getX()+tower.range) & abs(e.getY()) <= abs(tower.getY()+tower.range)){
+                    if(Math.sqrt((e.getX()-tower.getzX()) * (e.getX()-tower.getzX()) + (e.getY()-tower.getzY()) * (e.getX()-tower.getzX())) <= tower.range){
                         e.takeDamage(tower.damage);
                     }
             }
             for (Enemy e : Enemy.Tank) {
-                    if(abs(e.getX()) <= abs(tower.getX()+tower.range) & abs(e.getY()) <= abs(tower.getY()+tower.range)){
+                    if(Math.sqrt((e.getX()-tower.getzX()) * (e.getX()-tower.getzX()) + (e.getY()-tower.getzY()) * (e.getX()-tower.getzX())) <= tower.range){
                         e.takeDamage(tower.damage);
                     }
             }
         }
         if (tower.modef == 1 /* & en.freeze == 0 */) {
             for (Enemy e : Enemy.Standard) {
-                    if(abs(e.getX()) <= abs(tower.getX()+tower.range) & abs(e.getY()) <= abs(tower.getY()+tower.range)){
+                    if(Math.sqrt((e.getX()-tower.getzX()) * (e.getX()-tower.getzX()) + (e.getY()-tower.getzY()) * (e.getX()-tower.getzX())) <= tower.range){
                         //e.takeDamageandFreeze(tower.damage/5);
                     }
             }
             for (Enemy e : Enemy.Fast) {
-                    if(abs(e.getX()) <= abs(tower.getX()+tower.range) & abs(e.getY()) <= abs(tower.getY()+tower.range)){
+                    if(Math.sqrt((e.getX()-tower.getzX()) * (e.getX()-tower.getzX()) + (e.getY()-tower.getzY()) * (e.getX()-tower.getzX())) <= tower.range){
                         //e.takeDamageandFreeze(tower.damage/5);
                     }
             }
             for (Enemy e : Enemy.Tank) {
-                    if(abs(e.getX()) <= abs(tower.getX()+tower.range) & abs(e.getY()) <= abs(tower.getY()+tower.range)){
+                    if(Math.sqrt((e.getX()-tower.getzX()) * (e.getX()-tower.getzX()) + (e.getY()-tower.getzY()) * (e.getX()-tower.getzX())) <= tower.range){
                         //e.takeDamageandFreeze(tower.damage/5);
                     }
             }
         }
         if (tower.modef == 1 /* & en.freeze == 1 */) {
             for (Enemy e : Enemy.Standard) {
-                    if(abs(e.getX()) <= abs(tower.getX()+tower.range) & abs(e.getY()) <= abs(tower.getY()+tower.range)){
+                    if(Math.sqrt((e.getX()-tower.getzX()) * (e.getX()-tower.getzX()) + (e.getY()-tower.getzY()) * (e.getX()-tower.getzX())) <= tower.range){
                         e.takeDamage(tower.damage);
                     }
             }
             for (Enemy e : Enemy.Fast) {
-                    if(abs(e.getX()) <= abs(tower.getX()+tower.range) & abs(e.getY()) <= abs(tower.getY()+tower.range)){
+                    if(Math.sqrt((e.getX()-tower.getzX()) * (e.getX()-tower.getzX()) + (e.getY()-tower.getzY()) * (e.getX()-tower.getzX())) <= tower.range){
                         e.takeDamage(tower.damage);
                     }
             }
             for (Enemy e : Enemy.Tank) {
-                    if(abs(e.getX()) <= abs(tower.getX()+tower.range) & abs(e.getY()) <= abs(tower.getY()+tower.range)){
+                    if(Math.sqrt((e.getX()-tower.getzX()) * (e.getX()-tower.getzX()) + (e.getY()-tower.getzY()) * (e.getX()-tower.getzX())) <= tower.range){
                         e.takeDamage(tower.damage);
                     }
             }
