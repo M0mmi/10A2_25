@@ -1,7 +1,7 @@
 
 package assets.actors;
 import assets.GameAsset;
-import static java.lang.Math.abs;
+import static java.lang.Math.sqrt;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import gamelogic.Ticks;
@@ -45,17 +45,17 @@ public class Tower extends GameAsset {
         boolean g = false;
         // verschiedene
         for (Enemy e : Enemy.Standard) {
-                if(abs(e.getX()) <= abs(tower.getX()+tower.range) & abs(e.getY()) <= abs(tower.getY()+tower.range)){
+                if(Math.sqrt((e.getX()-tower.getzX()) * (e.getX()-tower.getzX()) + (e.getY()-tower.getzY()) * (e.getY()-tower.getzY())) <= tower.range){
                     g = true;
                 }
             }
         for (Enemy e : Enemy.Fast) {
-                if(abs(e.getX()) <= abs(tower.getX()+tower.range) & abs(e.getY()) <= abs(tower.getY()+tower.range)){
+                if(Math.sqrt((e.getX()-tower.getzX()) * (e.getX()-tower.getzX()) + (e.getY()-tower.getzY()) * (e.getY()-tower.getzY())) <= tower.range){
                     g = true;
                 }
             }
         for (Enemy e : Enemy.Tank) {
-                if(abs(e.getX()) <= abs(tower.getX()+tower.range) & abs(e.getY()) <= abs(tower.getY()+tower.range)){
+                if(Math.sqrt((e.getX()-tower.getzX()) * (e.getX()-tower.getzX()) + (e.getY()-tower.getzY()) * (e.getY()-tower.getzY())) <= tower.range){
                     g = true;
                 }
             }
@@ -66,7 +66,7 @@ public class Tower extends GameAsset {
     // prüfen ob sich ein bestimmtes tile innerhalb der towerrange befindet
     public boolean tileinrange(Tiles tile, Tower tower){
         boolean g = false;
-        if(abs(tile.getX()) <= abs(tower.getX()+tower.range) & abs(tile.getY()) <= abs(tower.getY()+tower.range)){
+        if(Math.sqrt((tile.getX()-tower.getzX()) * (tile.getX()-tower.getzX()) + (tile.getY()-tower.getzY()) * (tile.getY()-tower.getzY())) <= tower.range){
             g = true;
         }
         return g;
