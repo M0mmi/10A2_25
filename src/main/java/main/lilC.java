@@ -15,11 +15,13 @@ import javax.swing.JPanel;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
  *
  * @author guest-kihzdj
  */
 public class lilC extends JPanel {
+  
 
     Image Wiese;
     Image Weg_Waagerecht;
@@ -45,11 +47,36 @@ public class lilC extends JPanel {
     Image Background;
     Image oSL;
     Image B1;
+    Image AG;
+    Image BG;
+    Image EG;
+    Image Tafel; 
+    Image Koala1;
+    Image Koala1LVL2;
+    Image Koala1LVL3;
+    Image Koala2;
+    Image Koala2LVL2;
+    Image Koala2LVL3;
+    Image Koala3;
+    Image Koala3LVL2;
+    Image Koala3LVL3;
+    Image B2;
+    Image B3;
+    
+    
+    
 
     int x = 0;
     int a = 40;
 
     public lilC() {
+  
+          
+          
+          
+          
+          
+          
         super();
         this.setLayout(null);
         this.setSize(1920, 1080);
@@ -111,7 +138,8 @@ public class lilC extends JPanel {
         Baum1 = D.getImage();
         D = new ImageIcon(getClass().getResource("/Bilder/Baum3.png"));
         Baum3 = D.getImage();
-        D = new ImageIcon(getClass().getResource("/Bilder/ShopSign.png"));
+
+        D = new ImageIcon(getClass().getResource("/Bilder/button_Shop1.png"));
         Sign = D.getImage();
         D = new ImageIcon(getClass().getResource("/Bilder/ShopHintergrund.png"));
         Background = D.getImage();
@@ -119,7 +147,40 @@ public class lilC extends JPanel {
         oSL = D.getImage();
         D = new ImageIcon(getClass().getResource("/Bilder/Button_1.png"));
         B1 = D.getImage();
-
+        D = new ImageIcon(getClass().getResource("/Bilder/Endgegner.png"));
+        EG = D.getImage();
+        D = new ImageIcon(getClass().getResource("/Bilder/Anfangsgegner.png"));
+        AG = D.getImage();
+        D = new ImageIcon(getClass().getResource("/Bilder/Bomben_Gegner.png"));
+        BG = D.getImage();
+        D = new ImageIcon(getClass().getResource("/Bilder/Koala1.png"));
+        Koala1 = D.getImage();
+        D = new ImageIcon(getClass().getResource("/Bilder/Koala1LVL2.png"));
+        Koala1LVL2 = D.getImage();
+        D = new ImageIcon(getClass().getResource("/Bilder/Koala1LVL3.png"));
+        Koala1LVL3 = D.getImage();
+        D = new ImageIcon(getClass().getResource("/Bilder/Koala2.png"));
+        Koala2 = D.getImage();
+        D = new ImageIcon(getClass().getResource("/Bilder/Koala2LVL2.png"));
+        Koala2LVL2 = D.getImage();
+        D = new ImageIcon(getClass().getResource("/Bilder/Koala2LVL3.png"));
+        Koala2LVL3 = D.getImage();
+         D = new ImageIcon(getClass().getResource("/Bilder/Koala3.png"));
+        Koala3 = D.getImage();
+         D = new ImageIcon(getClass().getResource("/Bilder/Koala3LVL2.png"));
+        Koala3LVL2 = D.getImage();
+         D = new ImageIcon(getClass().getResource("/Bilder/Koala3LVL3.png"));
+        Koala3LVL3 = D.getImage();
+         D = new ImageIcon(getClass().getResource("/Bilder/Button_2.png"));
+        B2 = D.getImage();
+         D = new ImageIcon(getClass().getResource("/Bilder/Button_3.png"));
+        B3 = D.getImage();
+        D = new ImageIcon(getClass().getResource("/Bilder/Tafel1.png"));
+        Tafel = D.getImage();
+        
+        
+       
+    
     }
 
     /**
@@ -127,13 +188,12 @@ public class lilC extends JPanel {
      * @param g
      */
     @Override
-    protected void paintComponent(Graphics g) {
-        g.setColor(Color.green);
-        g.fillRect(0, 0, 1920, 1080);
-        g.setColor(Color.yellow);
-
+    protected void paintComponent(Graphics g
+    ) {
+     
+     
         //Wiesen
-        g.drawImage(Wiese, 0 * a, 0 * a, 120, 120, this);
+        g.drawImage(Wiese, 0 * a, 0 * a, 120, 120, this); 
         g.drawImage(Wiese, 3 * a, 0 * a, 120, 120, this);
         g.drawImage(Wiese, 6 * a, 0 * a, 120, 120, this);
         g.drawImage(Wiese, 9 * a, 0 * a, 120, 120, this);
@@ -526,8 +586,9 @@ public class lilC extends JPanel {
         g.drawImage(Baum3, 31 * a, 17 * a, 80, 80, this);
 
         //Shop
+       
         g.drawImage(Background, 1400, 0, 520, 1080, this);
-        g.drawImage(Sign, 1475, 100, 400, 200, this);
+        g.drawImage(Sign, 1520, 75, 400, 200, this);
         g.drawImage(oSL, 1400, 0, 600, 50, this);
         //Gegner malen
         int counH = 0;
@@ -545,6 +606,27 @@ public class lilC extends JPanel {
             counH++;
             g.drawImage(e.getImg().getImage(), e.getX()-counH*5-80, e.getY()-80, null);
         }        
+        
+        g.drawImage(Koala1, 1360, 235,260, 300, this);
+        g.drawImage(Koala3, 1700, 235, 260, 300, this);
+        g.drawImage(Koala2LVL2, 1530, 235, 260, 300, this);
+        
+        
+        g.drawImage(B1, 1340, 350,300, 295, this);
+        g.drawImage(B1, 1510, 350, 300, 295, this);
+        g.drawImage(B1,1680, 350, 300, 295, this);
+       
+        g.drawImage(Tafel, 1400, 525, 530, 400, this);
+        
+        g.drawImage(B2, 1390, 870, 275, 160, this);
+        g.drawImage(B3, 1645, 870, 275, 160, this);
+        
+        //gegner
+        
+   
+       
+       
+        
     }
 
 }
