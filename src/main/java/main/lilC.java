@@ -5,6 +5,8 @@
  */
 package main;
 
+import assets.GameAsset;
+import assets.actors.Enemy;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -53,12 +55,12 @@ public class lilC extends JPanel {
         this.setSize(1920, 1080);
 
         this.setVisible(true);
-        
+
         System.out.println(getClass().getResource("/Bilder/Wiese.png"));
-        
+
         ImageIcon A = new ImageIcon(getClass().getResource("/Bilder/Wiese.png"));
         Wiese = A.getImage();
-        
+
         ImageIcon B = new ImageIcon(getClass().getResource("/Bilder/Weg_Waagerecht.png"));
         Weg_Waagerecht = B.getImage();
 
@@ -117,16 +119,15 @@ public class lilC extends JPanel {
         oSL = D.getImage();
         D = new ImageIcon(getClass().getResource("/Bilder/Button_1.png"));
         B1 = D.getImage();
-   
-        }
+
+    }
 
     /**
      *
      * @param g
      */
     @Override
-    protected void paintComponent(Graphics g
-    ) {
+    protected void paintComponent(Graphics g) {
         g.setColor(Color.green);
         g.fillRect(0, 0, 1920, 1080);
         g.setColor(Color.yellow);
@@ -528,7 +529,22 @@ public class lilC extends JPanel {
         g.drawImage(Background, 1400, 0, 520, 1080, this);
         g.drawImage(Sign, 1475, 100, 400, 200, this);
         g.drawImage(oSL, 1400, 0, 600, 50, this);
-
+        //Gegner malen
+        int counH = 0;
+        for (GameAsset e : Enemy.Standard) {
+            counH++;
+            g.drawImage(e.getImg().getImage(), e.getX()-counH*5-80, e.getY()-120, null);
+        }
+        counH = 0;
+        for (GameAsset e : Enemy.Fast) {
+            counH++;
+            g.drawImage(e.getImg().getImage(), e.getX()-counH*5-80, e.getY()-50, null);
+        }
+        counH = 0;
+        for (GameAsset e : Enemy.Tank) {
+            counH++;
+            g.drawImage(e.getImg().getImage(), e.getX()-counH*5-80, e.getY()-80, null);
+        }        
     }
 
 }
